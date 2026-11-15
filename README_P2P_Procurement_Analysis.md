@@ -1,158 +1,107 @@
 # P2P Procurement Analytics — Advanced Excel
 
-An end-to-end Procure-to-Pay (P2P) analytics project built in Microsoft Excel to analyze procurement spend, supplier performance, invoice and payment exposure, procurement compliance, sourcing effectiveness, process efficiency, savings, and supplier risk.
+An end-to-end Procure-to-Pay (P2P) analysis of **5,200 purchase orders (2022–2024)** built in Microsoft Excel. It covers procurement spend, supplier performance, invoice and payment exposure, compliance, sourcing, process efficiency, savings and supplier risk, and ends with an executive dashboard and an interactive supplier report.
 
-## Project Overview
+**Files in this repo**
 
-The objective of this project is to turn procurement transaction data into actionable business insights using Advanced Excel.
+| File | What it is |
+|---|---|
+| `Dataset_Procurement.xlsx` | The full workbook: raw data, 8 analysis modules, integrated analysis, Supplier AP Report and Dashboard |
+| `Dashboard.pdf` | A PDF copy of the executive dashboard |
+| `README.md` | This file |
 
-The analysis follows the P2P lifecycle and focuses on questions such as:
+---
 
-- Where is procurement spend concentrated?
-- Which suppliers show delivery-performance concerns?
-- How much spend is exposed to overdue or on-hold payments?
-- Where is Maverick purchasing occurring?
-- How effectively are preferred suppliers and contract structures being used?
-- Where are procurement cycle-time bottlenecks?
-- Which suppliers show multiple risk signals?
-- Where are the largest savings opportunities?
-
-## Tools & Techniques
-
-- Microsoft Excel
-- PivotTables & PivotCharts
-- XLOOKUP / INDEX-MATCH
-- IF / COUNTIFS / SUMIFS
-- Conditional logic and KPI calculations
-- Data validation
-- Multi-currency normalization
-- Dashboard design
-- Business-focused data storytelling
-
-## Dataset
-
-The dataset contains **5,200 procurement transactions** covering **2022–2024**.
-
-The source data contains multiple currencies, including:
-
-- AUD
-- EUR
-- GBP
-- JPY
-- USD
-
-For comparable financial analysis, monetary values were normalized to **INR using month-wise FX rates based on the PO date**.
-
-> **Important:** FX conversion uses the transaction period's applicable rate rather than today's exchange rate.
-
-## Analytical Framework
-
-The workbook is organized into the following modules:
-
-### M1 — Spend Analysis
-Analyzes spend by PO status, category, supplier, department, region, country, and supplier-category combinations.
-
-### M2 — Supplier Performance
-Evaluates on-time delivery, supplier late rates, and average days late to identify suppliers requiring delivery-performance review.
-
-### M3 — Invoice & Payment
-Analyzes invoice status, invoice matching, problem invoice rates, payment status, and supplier-level payment exposure.
-
-### M4 — Procurement Compliance & Control
-Examines Maverick spend, preferred-supplier usage, departmental compliance patterns, and Maverick spend across contract types.
-
-### M5 — Savings & Budget
-Analyzes identified savings by year, category, and supplier, including savings percentages and savings contribution.
-
-### M6 — Process Efficiency
-Analyzes procurement volume, PO status trends, lead time by year/category/department/PO type, and long-cycle purchase orders.
-
-### M7 — Supplier Risk
-Combines delivery, Maverick purchasing, single-source exposure, ESG scores, and financial exposure to assess supplier risk from multiple dimensions.
-
-### M8 — Contract & Sourcing
-Analyzes contract-type mix, preferred vs non-preferred sourcing, Maverick spend by contract type, and Spot spend by department.
-
-### M9 — Integrated Analysis
-Consolidates the strongest findings into five management priorities and associated actions.
-
-## Executive Dashboard
-
-The final Excel dashboard summarizes the analysis using KPI cards and six management-focused visuals.
-
-### Key KPIs
+## Headline results (closed POs, INR)
 
 | KPI | Result |
 |---|---:|
-| Closed Procurement Spend | **₹51.65B** |
-| Payment At-Risk | **₹12.10B** |
-| Maverick Spend | **₹4.98B** |
-| Identified Savings | **₹5.26B** |
-| On-Time Delivery | **65.0%** |
+| Closed procurement spend | **₹51.65B** (3,094 closed POs) |
+| Payment at-risk (Overdue + On Hold) | **₹12.10B** (23.4% of closed spend) |
+| Maverick spend | **₹4.98B** (9.6% of closed spend) |
+| Identified savings | **₹5.26B** (8.66% average savings rate) |
+| On-time delivery | **65.0%** |
 
-**Payment At-Risk = Overdue + On Hold**
+## Key findings
 
-**Maverick Spend = Spend flagged as Maverick**
+1. **Payment exposure.** ₹12.10B of closed spend is Overdue or On Hold. Overdue invoices are 12.0% of closed invoices and Disputed are 8.4%.
+2. **Maverick spend.** ₹4.98B (9.6%) was bought outside the preferred sourcing process, and **all of it is with non-preferred suppliers**. Every one of the 386 Maverick POs came from just three suppliers: Atlantic Raw Materials (133), Meridian Tech (129) and Iron Gate Steel (124).
+3. **Supplier delivery.** 35% of closed POs were delivered late, by 15.5 days on average. SunRise Manufacturing, Pacific Rim Supplies and GlobalParts Ltd combine high spend with 37–39% late rates.
+4. **Savings.** About 79% of the ₹5.26B came from IT Software, Professional Services, Marketing and IT Hardware. The average savings rate rose from 8.35% (2022) to 8.82% (2023) and held in 2024.
+5. **Sourcing.** Spot purchasing is 53.7% of closed spend, and non-preferred suppliers account for more than 50% of spend in every department. Marketing is the most exposed (74.2% non-preferred spend).
+6. **Process speed.** Average lead time is about 36 days, and 284 of 3,094 closed POs (9.2%) took more than 61 days.
+7. **Supplier risk is multidimensional.** High-risk suppliers are not much later than low-risk ones, but 67.9% of their spend is Maverick. No single indicator ranks the suppliers correctly, so the analysis combines delivery, Maverick, single-source, payment exposure and ESG scores.
+8. **Data consistency flag.** 372 closed POs show an invoice status of *Paid* but a payment status of *Overdue* (218) or *On Hold* (154). These are worth reconciling against payment records.
 
-## Key Findings
+---
 
-### 1. Payment exposure
-**₹12.10B** of closed spend is classified as **Overdue or On Hold**, representing approximately **23.4% of closed spend**.
+## Questions the analysis answers
 
-### 2. Procurement compliance
-The analysis identifies **₹4.98B of Maverick spend**, approximately **9.6% of closed spend**. All flagged Maverick spend is associated with non-preferred suppliers.
+- Where is procurement spend concentrated?
+- Which suppliers deliver late, and by how much?
+- How much spend is exposed to overdue or on-hold payments?
+- Where does Maverick purchasing happen?
+- How well are preferred suppliers and contract types used?
+- Where are the cycle-time bottlenecks?
+- Which suppliers show several risk signals at once?
+- Where are the biggest savings?
 
-### 3. Supplier delivery
-Overall on-time delivery is **65%**, meaning **35% of closed POs were delivered late**.
+## Workbook structure
 
-Suppliers highlighted for recurring delivery review include:
+| Sheet | Purpose |
+|---|---|
+| **Data** | 5,200 rows × 62 fields, kept as an Excel Table |
+| **M1 Spend Analysis** | Spend by PO status, category, department, supplier, region and country |
+| **M2 Supplier Performance** | On-time rate, late rate and average days late by supplier |
+| **M3 Invoice & Payment** | Invoice status, match type, problem-invoice rate, payment exposure by supplier |
+| **M4 Procurement Compliance** | Maverick spend by department, contract type and preferred-supplier status |
+| **M5 Savings & Budget** | Savings by year, category and supplier |
+| **M6 Process Efficiency** | PO volume, lead time by year, category, department and PO type, long-cycle POs |
+| **M7 Supplier Risk** | Risk tier crossed with delivery, Maverick spend, single-source and payment exposure |
+| **M8 Contract & Sourcing** | Contract mix, preferred vs non-preferred, Spot spend by department |
+| **Integrated P2P Analysis** | The strongest findings ranked into five management priorities with actions |
+| **Supplier AP Report** | Pick a supplier from a dropdown and see its POs, spend, payment status, late rate, Maverick and single-source POs and ESG score |
+| **Dashboard** | KPI cards and six visuals for management |
+| **Calendar / FX Rates / Lists** | Supporting tables for dates, month-wise FX rates and the supplier dropdown |
 
-- SunRise Manufacturing
-- Pacific Rim Supplies
-- GlobalParts Ltd
+## Method
 
-### 4. Sourcing structure
-**Spot procurement accounts for 53.7% of closed spend**, while non-preferred supplier usage is above 50% across every department.
+- **Multi-currency normalization.** The source data is in AUD, EUR, GBP, JPY and USD. Each PO was converted to INR using the **month-wise FX rate for its PO date** (not today's rate). A key built from the PO month and currency is looked up in an FX rate table with `XLOOKUP`.
+- **Scope.** Most analysis uses **Closed** POs only, so cancelled, open and disputed POs do not distort spend, payment or savings figures. The PO-status view in M1 shows all statuses for context.
+- **Definitions.** *Payment at-risk* = Overdue + On Hold. *Maverick spend* = spend flagged as Maverick in the data.
 
-### 5. Procurement cycle time
-**284 of 3,094 closed POs (9.2%)** take more than **61 days** to complete.
+## Excel techniques used
 
-### 6. Supplier risk is multidimensional
-Delivery performance, Maverick purchasing, single-source exposure, payment exposure, and ESG scores do not consistently point to the same suppliers. The project therefore uses multiple indicators rather than relying on a single supplier-risk measure.
+- 48 PivotTables and 6 charts
+- `XLOOKUP`, `SUMIFS`, `COUNTIFS`, `AVERAGEIFS`, `GETPIVOTDATA`, `IFERROR`, `TEXT`
+- `SORT` and `UNIQUE` to build the supplier dropdown list
+- Data validation (supplier selector)
+- Excel Tables with structured references
+- Calendar and FX lookup tables
+- KPI cards and dashboard layout
 
-## Business Value
+> **Excel version:** `XLOOKUP`, `SORT` and `UNIQUE` need Excel 2021 or Microsoft 365.
 
-This project demonstrates how procurement transaction data can be converted into:
+## How to use the workbook
 
-**Data → Analysis → KPI → Business Insight → Management Action**
-
-Rather than producing only descriptive PivotTables, the project connects multiple dimensions of the P2P process to identify financial, operational, compliance, sourcing, and supplier-risk opportunities.
+1. Open `Dataset_Procurement.xlsx` and start on the **Dashboard** sheet.
+2. Open **Supplier AP Report** and choose a supplier from the dropdown in cell B4.
+3. Open any **M1–M8** sheet to see the supporting pivots and the written conclusion.
+4. The **Integrated P2P Analysis** sheet lists the five management priorities and recommended actions.
 
 ## Limitations
 
-- The dataset is a consolidated procurement dataset rather than a fully normalized enterprise P2P database containing separate PR, PO, GRN, invoice, and payment tables.
-- Some indicators, such as payment exposure and Maverick spend, are treated as analytical flags from the dataset and should be validated against underlying company policies and accounting records in a real business environment.
-- Savings analysis uses INR-normalized monetary values; savings percentage is retained as the transaction-level percentage metric.
+- The dataset is one consolidated table, not a full enterprise P2P system with separate requisition, PO, goods-receipt, invoice and payment tables. There are no invoice dates, so invoice ageing could not be analysed.
+- Flags such as Maverick spend and payment status are taken as given in the data. In a real business they would be checked against company policy and accounting records.
+- The 372 Paid-invoice versus Overdue/On-Hold-payment cases may be a data-recording issue, not a payment problem. They need checking at the source.
 
-## Future Enhancement
+## Next step
 
-A reusable **Vendor 360° Report** can be added to the workbook, allowing a user to select a supplier and retrieve:
+Rebuild the analysis as an interactive **Power BI** model (star schema, DAX measures, row-level security and drill-through supplier scorecards).
 
-- PO count
-- Closed spend
-- Payment status exposure
-- Overdue / On Hold amounts
-- Late PO count and late rate
-- Maverick PO count
-- Single-source exposure
-- ESG score
-
-A separate Power BI dashboard can also be developed later using the cleaned procurement dataset to demonstrate interactive BI reporting.
+---
 
 ## Author
 
-**Sudhir Kumar**
-
-B.Com (Honours) Graduate | Aspiring Data Analyst / P2P Analyst
-
-Skills demonstrated through this project: **Excel, data analysis, financial analysis, procurement analytics, KPI development, business reporting, and data storytelling.**
+**Sudhir Kumar Salugu** — B.Com (Accounting & Finance) | Data Analyst / P2P Analyst
+[LinkedIn](https://www.linkedin.com/in/salugu-sudhir-kumar/)
